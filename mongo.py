@@ -4,9 +4,9 @@ import sys
 # Replace the placeholder data with your Atlas connection string. Be sure it includes
 # a valid username and password! Note that in a production environment,
 # you should not store your password in plain-text here.
-
+# password is dumbass
 try:
-  client = pymongo.MongoClient("mongodb+srv://asanthanakri:<password>@cluster0.9esju.mongodb.net/?retryWrites=true&w=majority")
+  client = pymongo.MongoClient("mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.net/?retryWrites=true&w=majority")
   
 # return a friendly error if a URI error is thrown 
 except pymongo.errors.ConfigurationError:
@@ -17,7 +17,7 @@ except pymongo.errors.ConfigurationError:
 db = client.myDatabase
 
 # use a collection named "recipes"
-my_collection = db["recipes"]
+my_collection = db["CourseInfo"]
 
 recipe_documents = [{ "name": "elotes", "ingredients": ["corn", "mayonnaise", "cotija cheese", "sour cream", "lime"], "prep_time": 35 },
                     { "name": "loco moco", "ingredients": ["ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"], "prep_time": 54 },
