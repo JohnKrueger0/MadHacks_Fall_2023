@@ -5,6 +5,7 @@ from flask import Flask, render_template, request
 from io import BytesIO
 from PIL import Image
 import base64
+import superScheduleGenerator as gen
 
 app = Flask(__name__)
 
@@ -19,10 +20,7 @@ def home():
 
 @app.route('/index.html')
 def index():
-    # Create a sample image with PIL (you may already have an image)
-    # Replace this with your image creation logic
-    width, height = 300, 200
-    img = Image.new('RGB', (width, height), color='red')
+    img = gen.sortSchedules(gen.getSchedules()).paintSchedule()
 
     # Convert the PIL image to a base64 encoded string
     buffered = BytesIO()
