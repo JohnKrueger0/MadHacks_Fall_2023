@@ -7,7 +7,7 @@ import sys
 # password is dumbass
 def mangoify(list):
   try:
-    client = pymongo.MongoClient("mongodb+srv://asanthanakri:<password>@cluster0.9esju.mongodb.net/")
+    client = pymongo.MongoClient("mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.net/")
     
   # return a friendly error if a URI error is thrown 
   except pymongo.errors.ConfigurationError:
@@ -114,9 +114,9 @@ def mangoify(list):
 # my_result = my_collection.delete_many({ "$or": [{ "name": "elotes" }, { "name": "fried rice" }]})
 # print("I deleted %x records." %(my_result.deleted_count))
 # print("\n")
-# recipe_documents = [{ "name": "elotes", "ingredients": ["corn", "mayonnaise", "cotija cheese", "sour cream", "lime"], "prep_time": 35 },
-#                        { "name": "loco moco", "ingredients": ["ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"], "prep_time": 54 },
-#                        { "name": "patatas bravas", "ingredients": ["potato", "tomato", "olive oil", "onion", "garlic", "paprika"], "prep_time": 80 },
-#                        { "name": "fried rice", "ingredients": ["rice", "soy sauce", "egg", "onion", "pea", "carrot", "sesame oil"], "prep_time": 40 }]
+#recipe_documents = [{ "name": "elotes", "ingredients": ["corn", "mayonnaise", "cotija cheese", "sour cream", "lime"], "prep_time": 35 },
+#                       { "name": "loco moco", "ingredients": ["ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"], "prep_time": 54 },
+#                       { "name": "patatas bravas", "ingredients": ["potato", "tomato", "olive oil", "onion", "garlic", "paprika"], "prep_time": 80 },
+#                       { "name": "fried rice", "ingredients": ["rice", "soy sauce", "egg", "onion", "pea", "carrot", "sesame oil"], "prep_time": 40 }]
 
-# mangoify(recipe_documents)
+#mangoify(recipe_documents)

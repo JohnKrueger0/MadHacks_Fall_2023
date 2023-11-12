@@ -9,6 +9,7 @@ from selenium.common.exceptions import TimeoutException
 import time
 from lxml import etree 
 import re
+from mango import mangoify as mangoSave
 
 # Simulating a click with Selenium
 driver = webdriver.Chrome()  # You'll need the appropriate WebDriver for your browser
@@ -120,8 +121,8 @@ for page in range(111):
 
                             if sessionInfo['Credits'] == '':
                                 sessionInfo['Credits'] = section_credits
-
                         print(sessionInfo)
+                        mangoSave([sessionInfo])
                     except Exception as e:
                         broken_classes.append(classTitle)
                         print(broken_classes, e)
