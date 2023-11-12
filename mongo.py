@@ -7,7 +7,7 @@ import sys
 # password is dumbass
 def mangoify(list):
   try:
-    client = pymongo.MongoClient("mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.net/")
+    client = pymongo.MongoClient("mongodb+srv://asanthanakri:<password>@cluster0.9esju.mongodb.net/")
     
   # return a friendly error if a URI error is thrown 
   except pymongo.errors.ConfigurationError:

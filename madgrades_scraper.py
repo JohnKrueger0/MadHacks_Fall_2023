@@ -9,22 +9,11 @@ from selenium.common.exceptions import TimeoutException
 import time
 from lxml import etree 
 import re
-# Simulating a click with Selenium
+
 driver = webdriver.Chrome()  # You'll need the appropriate WebDriver for your browser
 driver.get('https://madgrades.com/search')  # Replace this with the URL you want to scrape
 driver.fullscreen_window()
-# Perform clicks or interactions using Selenium, for example:
-# driver.find_element_by_xpath("xpath_to_element").click()
 
-# Once the page is in the state you want, retrieve the page source
-#page_source = driver.page_source
-
-# Now, you can use BeautifulSoup to parse the page
-#soup = BeautifulSoup(page_source, 'html.parser')
-
-
-#root > div > div.app-content > div > div > div.col-xs-12.col-md-8.col-lg-9 > div.dimmable > div:nth-child(2) > div > div > a
-#root > div > div.app-content > div > div > div.col-xs-12.col-md-8.col-lg-9 > div.dimmable > div:nth-child(2) > div > div > a
 #root > div > div.app-content > div > div > div.col-xs-12.col-md-8.col-lg-9 > div.dimmable > div:nth-child(2) > div > div > a
 
 soup = BeautifulSoup(driver.page_source, "html.parser")
