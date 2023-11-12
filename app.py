@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, jsonify
 from io import BytesIO
 from PIL import Image
 import base64
+from flask import Flask, request, jsonify
 import superScheduleGenerator as gen
 
 width, height = 300, 200
@@ -25,6 +26,16 @@ def home():
 # @app.route('/welcome.html')
 # def home():
 #     return render_template('welcome.html')
+
+@app.route('/submit_classes', methods=['POST'])
+def submit_classes():
+    data = request.json
+    classes = data['classes']
+    # Now you can process the classes as needed
+    print(classes)
+
+    # Send a response back to the front end
+    return jsonify(success=True, message="Classes received.")
 
 
 @app.route('/index.html')
