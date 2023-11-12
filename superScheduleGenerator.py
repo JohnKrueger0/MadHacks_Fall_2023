@@ -4,7 +4,7 @@ from session import Session
 from schedule import Schedule
 import copy
 
-classOptions = [['MATH 321', 'MATH 221'], ['PHYSICS 202', 'PHYSICS 201', 'E M A 201'], ['COMP SCI 220', 'MATH 222', 'MATH 217'], ['HISTORY 120', 'HISTORY 101', 'HISTORY 329']]
+classOptions = [['MATH 320', 'MATH 340', 'MATH 341', 'MATH 234'], ['PHYSICS 202', 'PHYSICS 201', 'E M A 201', 'E M A 202'], ['COMP SCI 220', 'E C E 252', 'COMP SCI 200'], ['HISTORY 120', 'HISTORY 101', 'HISTORY 329']]
 wGpa = 0
 wMorning = 1
 wEvening = 0
