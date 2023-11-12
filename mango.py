@@ -49,7 +49,7 @@ def mangoify(list):
     sys.exit(1)
   else:
     inserted_count = len(result.inserted_ids)
-    print("I inserted %x documents." %(inserted_count))
+    print("I inserted %x course." %(inserted_count))
 
     print("\n")
 

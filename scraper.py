@@ -13,7 +13,7 @@ from mango import mangoify as mangoSave
 
 # Simulating a click with Selenium
 driver = webdriver.Chrome()  # You'll need the appropriate WebDriver for your browser
-driver.get('https://public.enroll.wisc.edu/search?term=1244&keywords=Art%20history%20201')  # Replace this with the URL you want to scrape
+driver.get('https://public.enroll.wisc.edu/search?term=1244')  # Replace this with the URL you want to scrape
 driver.fullscreen_window()
 # Perform clicks or interactions using Selenium, for example:   
 # driver.find_element_by_xpath("xpath_to_element").click()
