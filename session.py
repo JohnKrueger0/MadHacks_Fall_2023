@@ -5,12 +5,13 @@ class Session:
     titles = []
     profs = []
 
-    def __init__(self, title, prof, lecTime, lecLoc, lecNum, disTime, disLoc, disNum, labTime, labLoc, labNum):
-        self.title = title
-        self.prof = prof
-        self.times, self.locs, self.nums, self.profs, self.titles = self.timesToBusyTimes(lecTime, lecLoc, lecNum)
-        self.addBusyTime(self.timesToBusyTimes(disTime, disLoc, disNum))
-        self.addBusyTime(self.timesToBusyTimes(labTime, labLoc, labNum))
+    def __init__(self, sessInfo):
+
+        self.title = sessInfo['Class Title']
+        self.prof = sessInfo['Professor']
+        self.times, self.locs, self.nums, self.profs, self.titles = self.timesToBusyTimes(sessInfo['LecTime'], sessInfo['LecLoc'], sessInfo['LecNumber'])
+        self.addBusyTime(self.timesToBusyTimes(sessInfo['DisTime'], sessInfo['DisLoc'], sessInfo['DisNumber']))
+        self.addBusyTime(self.timesToBusyTimes(sessInfo['LabTime'], sessInfo['LabLoc'], sessInfo['LabNumber']))
 
     def timesToBusyTimes(self, _time, _loc, _num):
         _times = []
@@ -53,19 +54,20 @@ class Session:
         return (_times, _locs, _nums, _profs, _titles)
 
     def toMilitaryTuple(self, _time):
+        
         _times = _time.split(' - ')
         start = _times[0]
         end = _times[1]
 
         startHour = start.split(':')[0]
         startMin = start.split(':')[1][:-2]
-        startAm = start[-2:] == 'am'
+        startAm = start[-2:].lower() == 'am'
         endHour = end.split(':')[0] 
         endMin = end.split(':')[1][:-2]
-        endAm = end[-2:] == 'am'
+        endAm = end[-2:].lower() == 'am'
 
-        startMil = str(int(startHour) + (0 if startAm else 12)) + startMin
-        endMil = str(int(endHour) + (0 if endAm else 12)) + endMin
+        startMil = str(int(startHour) + (0 if (startAm or int(startHour) == 12) else 12)) + startMin
+        endMil = str(int(endHour) + (0 if (endAm or int(endHour) == 12) else 12)) + endMin
 
         return (int(startMil), int(endMil))
     
