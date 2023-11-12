@@ -1,5 +1,6 @@
 from PIL import ImageFont, ImageDraw, Image
 from session import Session
+from scipy.special import expit
 
 def to_tuple(x):
     l = x.lstrip('#')
@@ -11,6 +12,7 @@ class Schedule:
     locs = []
     titles = []
     profs = []
+    score = 0
     #busyTimes = []
     #classInfo = []
     #addedSessions = []  # To store added sessions
@@ -21,6 +23,7 @@ class Schedule:
         self.locs = self.getEmptyWeek()
         self.titles = self.getEmptyWeek()
         self.profs = self.getEmptyWeek()
+        score = 0
 
     def getEmptyWeek(self):
         empty = []
@@ -159,6 +162,37 @@ class Schedule:
 
         return standardTime
     
+    def getTimeConc(self, t):
+        avgDist = []
+        cnt = 0
+        for day in self.times:
+            for cl in day:
+                avgDist.append(abs(t - (cl[0] + cl[1]) / 2))
+                cnt += 1
+        return min(max(1.55 - sum(avgDist) / cnt / 300, 0), 1)
+
+    def getScore(self, GPAs, wGpa, wMorning, wEvening):
+        cumGpa = 0
+        cntGpa = 0
+        for gpa in GPAs:
+            if gpa != '0':
+                cumGpa += float(gpa)
+                cntGpa += 1
+        avgGpa = cumGpa / cntGpa
+        normGpa = (avgGpa - 2) / 2
+        normMorning = self.getTimeConc(730)
+        normEvening = self.getTimeConc(1700)
+
+        return normGpa * wGpa + normMorning * wMorning + normEvening * wEvening
+
+    def getClasses(self):
+        classList = []
+        for day in self.titles:
+            for cl in day:
+                if not cl in classList:
+                    classList.append(cl)
+        return classList
+                
 
 # [[(1100, 1150), (1530, 1620)], [], [(1100, 1150)], [], [(1100, 1150), (1530, 1620)], []]
 # [['Helen C White', 'E-Hall'], [], ['Helen C White'], [], ['Helen C White', 'E-Hall'], []]

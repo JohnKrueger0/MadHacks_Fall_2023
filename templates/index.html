@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=5.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>home</title>
   <meta charset="utf-8" />
-	  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	  <meta name="viewport" content="width=device-width, initial-scale=5.0" /> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=5.0" /> 
   <link href="style.css" rel="stylesheet" type="text/css" />
   <!-- Importing fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;500&display=swap" rel="stylesheet">
   
-<link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
 
-<linkhref='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
-</head>
+  <linkhref='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+  </head>
 
 
+  <style>
+    body {
+        font-family: 'Space Grotesk';font-size: 22px;
+    }</style>
   
+
   
   <style>
   body {
-      font-family: 'Space Grotesk';font-size: 22px;
-  }
+            font-family: Arial, sans-serif;
+            
+            justify-content: center;
+            font-size: 100%;
+            height: 350vh;
+            margin: 0%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+        }
+
+        .grid-item {
+            text-align: center;
+           
+        }
+
+        input {
+            width: 70%;
+            height: 200%;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+  
   </style>
 
 
@@ -48,6 +78,10 @@
  <!--///NAVIGATION BAR... -->
   <nav>
     <ul>
+      <il>
+        <a href="welcome.html">welcome</a>
+      </il>
+      
       
       <il>
         <a href="index.html">home</a>
@@ -56,12 +90,14 @@
       <il>
         <a href="impact.html">impact</a>
       </il>
-            <il>
+
+      <il>
         <a href="aboutus.html">about us</a>
       </il>
   
     </ul>
   </nav>
+
   <!-- ...NAVIGATION BAR/// -->
 
    <!-- ///HEADER...-->
@@ -73,59 +109,118 @@
     <br>
     <br>
     <br>
+
+    
 <div class="bigHeader">
   
     <h1 id="mainTitle">s i f t</h1>
-  <br>
-  <br>
-  <br>
-  <br>
-  
-  </div>
-    <br>
-    <br>
 
-    <p id="subtitle"><i>course selection made easier</i></p>
+</div>
+<div class = "initialSubtext">
+    <h3 id="subtitle"><i>course selection made easier</i></h3>
+
     <br>
     <br>
+    </div>
+    </div>
 
   </header>
-  <br>
-  <br>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <hr>
-
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <div
+    
+  
     
         class="classButtonContainer"> <button type = "classButton">Classes</classButton></button>
    
    </button>
    
-     </div>
+    </div>
   
     </div>
   
  
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-    <p id="subtitle"><i>Type in the classes you want to add</i></p>
-  <br>
-  <br>
-  <br>
     
-    
- <button onclick="changeButtonText()"><input type="text" id="textInput" placeholder="Enter Class type"></button>
-  
 
-    <p id="secondsubtitle">Create list of buttons here. figure out how to containerize them</p>
-  
-  
+    
+    <p id="classPrompt"><i>Type in the classes you want to add</i></p>
+
     <br>
+    <br>
+    <br>
+      
+  <!--<div class="flex-container">
+    
+    <div class="flex-item">
+    <button onclick="changeButtonText()"><input type="text" id="textInput" placeholder="Enter Class type"></button>
+    </div>
+
+    <div class="flex-item">
+    <button onclick="changeButtonText()"><input type="text" id="textInput" placeholder="Enter Class type"></button>
+    </div>
+
+    <div class="flex-item">
+      <button onclick="changeButtonText()"><input type="text" id="textInput" placeholder="Enter Class type"></button>
+      </div>
+
+    <div class="flex-item">
+    <button onclick="changeButtonText()"><input type="text" id="textInput" placeholder="Enter Class type"></button>
+    </div>
+  </div>
+  -->
+
+  
+<div class="grid-container">
+  <!-- Generating a 3x4 grid with JavaScript -->
+</div>
+
+<script>
+  // JavaScript to dynamically generate the grid
+  document.addEventListener('DOMContentLoaded', function () {
+      const gridContainer = document.querySelector('.grid-container');
+
+      // Define the grid dimensions
+      const rows = 3;
+      const columns = 4;
+
+      // Generate the grid
+      for (let i = 0; i < rows; i++) {
+          for (let j = 0; j < columns; j++) {
+              const gridItem = document.createElement('div');
+              gridItem.classList.add('grid-item');
+
+              const input = document.createElement('input');
+              input.setAttribute('type', 'text');
+              input.setAttribute('placeholder', `Class ${i + 1}`);
+
+              gridItem.appendChild(input);
+              gridContainer.appendChild(gridItem);
+          }
+      }
+  });
+</script>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <br>
   <br>
@@ -137,27 +232,127 @@
 
   <br>
   <br>
+
+  <div
+    
+  
+    
+    class="prioritiesContainer"> <button type = "priorityButton">Priority</priorityButton></button>
+   
+   </button>
+   
+    </div>
+  
+    </div>
+  
+
+    <p id="classPrompt"><i>rank what you value in a class</i></p>
+
+  
+  <br>
+  <br>
   <br>
   <br>
   <br>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p id="secondsubtitle">Priorities button</p>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 
-  <p>factor 1</p>
-  <p>factor 2</p>
-  <p>factor 3</p>
+
+
+  <!--FINALLY ONTO SLIDERS!!!!-->
+  <!--SLIDER 1 GPA-->
+    <style>
+      body {
+        font-family:'Space Grotesk';
+        
+        justify-content: center;
+        align-items: center;
+        height: 300vh;
+        margin: 0;
+      }
+  
+      .slider-container {
+        width: 250px;
+        text-align: left;
+        margin-left: 20%;
+
+        
+      }
+  
+      .slider-label {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+      }
+  
+      .slider {
+        -webkit-appearance: none;
+        width: 250%;
+        height: 10px;
+        border-radius: 5px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+      }
+      
+  
+      .slider:hover {
+        opacity: 1;
+      }
+  
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #af4c5c;
+        cursor: pointer;
+      }
+      .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #af4c4c;
+      cursor: pointer;
+    }
+  </style>
+
+
+</head>
+<body>
+  <div class="slider-container">
+
+    <div class="slider-label">GPA <span id="sliderValue">50</span></div>
+    <input type="range" min="0" max="100" value="50" class="slider" id="mySlider">
+  </div>
+
+  <div class="slider-container">
+  
+  <div class="slider-label">Morning <span id="sliderValue">50</span></div>
+    <input type="range" min="0" max="100" value="50" class="slider" id="mySlider">
+  </div>
+  <div class="slider-container">
+
+  <div class="slider-label">Evening <span id="sliderValue">50</span></div>
+    <input type="range" min="0" max="100" value="50" class="slider" id="mySlider">
+  </div>
+
+  
+
+  <script>
+    // JavaScript to update the displayed value when the slider is moved
+    const slider = document.getElementById("mySlider");
+    const sliderValueSpan = document.getElementById("sliderValue");
+
+    slider.addEventListener("input", function() {
+      sliderValueSpan.textContent = this.value;
+    });
+    
+  </script>
+
+  
+
 
   <br>
   <br>

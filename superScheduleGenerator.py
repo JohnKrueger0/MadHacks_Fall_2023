@@ -4,7 +4,11 @@ from session import Session
 from schedule import Schedule
 import copy
 
-classOptions = [['MATH 234', 'MATH 320', 'MATH 340'], ['M E 231', 'ME 201'], ['E C E 252', 'COMP SCI 200', 'COMP SCI 220'], ['HISTORY 101', 'HISTORY 102', 'HISTORY 151']]
+classOptions = [['MATH 321', 'MATH 221'], ['PHYSICS 202', 'PHYSICS 201', 'E M A 201'], ['COMP SCI 220', 'MATH 222', 'MATH 217'], ['HISTORY 120', 'HISTORY 101', 'HISTORY 329']]
+wGpa = 0
+wMorning = 1
+wEvening = 0
+
 
 def getSchedules():
     client = MongoClient('mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.net/?retryWrites=true&w=majority')
@@ -23,10 +27,11 @@ def getSchedules():
         classSessions.append(categorySessions)
 
     validSchedules = []
+
     for cat1 in range(len(classSessions[0])):
         sched1 = Schedule()
         sched1.AddSession(classSessions[0][cat1])
-        
+
         for cat2  in range(len(classSessions[1])):
             sched2 = copy.deepcopy(sched1)
             added = sched2.AddSession(classSessions[1][cat2])
@@ -38,7 +43,7 @@ def getSchedules():
                 added = sched3.AddSession(classSessions[2][cat3])
                 if not added:
                     break
-                
+
                 for cat4  in range(len(classSessions[3])):
                     sched4 = copy.deepcopy(sched3)
                     added = sched4.AddSession(classSessions[3][cat4])
@@ -51,4 +56,36 @@ def getSchedules():
 
     return validSchedules
 
-print(getSchedules()[2].paintSchedule())
+def sortSchedules(schedules):
+    client = MongoClient('mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.net/?retryWrites=true&w=majority')
+    db = client['NewDatabase']
+    collection = db['NewCollection']
+
+    classCache = {}
+
+    scheduleScores = []
+
+    #schedules[i].paintSchedule()
+
+    for schedule in schedules:
+        classList = schedule.getClasses()
+        gpaList = []
+        for cl in classList:
+            if not cl in classCache:
+                classCache[cl] = collection.find_one({'Class Title': cl})['GPA']
+            gpaList.append(classCache[cl])
+
+        scheduleScores.append(schedule.getScore(gpaList, wGpa, wMorning, wEvening))
+
+    sorted_schedules = [x for _, x in sorted(zip(scheduleScores, schedules), key=lambda pair: pair[0])]
+    
+    sorted_schedules[len(sorted_schedules)-1].paintSchedule() 
+    
+    sorted_schedules.reverse()
+    return sorted_schedules
+
+
+
+scheds = getSchedules()
+sorted  = sortSchedules(scheds)
+sorted[0].paintSchedule()

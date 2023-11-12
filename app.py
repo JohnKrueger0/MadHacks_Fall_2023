@@ -1,27 +1,35 @@
 import io
 import json
 import os
-
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 
+
 @app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/welcome.html')
+def home():
+    return render_template('welcome.html')
+
+@app.route('/index.html')
 def index():
     return render_template('index.html')
 
 
 
-@app.route('/impact')
+@app.route('/impact.html')
 def impact():
     return render_template('impact.html')
 
 
 
 
-@app.route('/aboutus')
+@app.route('/aboutus.html')
 def aboutus():
     return render_template('aboutus.html')
 
@@ -62,7 +70,7 @@ def aboutus():
 
 # @app.errorhandler(404)
 # def page_not_found(e):
-#     return render_template('404.html', common=common), 404
+#     return render_template('404.html'), 404
 
 
 # def get_static_file(path):
@@ -77,3 +85,4 @@ def aboutus():
 if __name__ == "__main__":
     print("running py app")
     app.run(host="127.0.0.1", port=5000, debug=True)
+
