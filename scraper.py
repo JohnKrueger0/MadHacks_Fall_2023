@@ -60,6 +60,8 @@ for page in range(111):
             lecs = soup.select('#sections > section > section > cse-course-packages > cse-detail-topic > section > cse-package-group')
             prof_names = []
 
+            sections = []
+
             for lec in range(len(lecs)):
                 prof_name = lecs[lec].select_one('#sections > section > section > cse-course-packages > cse-detail-topic > section > cse-package-group > details > summary > cse-parent-header > cse-pack-header > div > div.cell.instructors.ng-star-inserted > span').text
                 #print(prof_name)
@@ -122,10 +124,12 @@ for page in range(111):
                             if sessionInfo['Credits'] == '':
                                 sessionInfo['Credits'] = section_credits
                         print(sessionInfo)
-                        mangoSave([sessionInfo])
+                        sections.append(sessionInfo)
+                        #mangoSave([sessionInfo])
                     except Exception as e:
                         broken_classes.append(classTitle)
                         print(broken_classes, e)
+            mangoSave(sections)
         except Exception as e:
             print('This is sad :(', e)
         
