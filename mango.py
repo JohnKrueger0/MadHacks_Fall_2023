@@ -15,10 +15,10 @@ def mangoify(list):
     sys.exit(1)
 
   # use a database named "myDatabase"
-  db = client.myDatabase
+  db = client.theDatabase
 
   # use a collection named "recipes"
-  my_collection = db["CourseInfo"]
+  my_collection = db["CourseStuff"]
 
   # recipe_documents = [{ "name": "elotes", "ingredients": ["corn", "mayonnaise", "cotija cheese", "sour cream", "lime"], "prep_time": 35 },
   #                     { "name": "loco moco", "ingredients": ["ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"], "prep_time": 54 },
