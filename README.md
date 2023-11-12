@@ -1,2 +1,3 @@
-# MadHacks_Fall_2023
-# Hello
+# # Project: Sift Scheduler for UW Madison Class Enrollment
+** __ Inspiration __ **
+The inspiration for this project stemmed from the chaotic experience of enrolling in courses at UW Madison. The process often lacked personalized filters to cater to individual preferences in terms of both average GPA and class timings. This led to the creation of a tool that could streamline this process, providing students with more control and ease during the enrollment period.

@@ -78,14 +78,14 @@ def sortSchedules(schedules):
         scheduleScores.append(schedule.getScore(gpaList, wGpa, wMorning, wEvening))
 
     sorted_schedules = [x for _, x in sorted(zip(scheduleScores, schedules), key=lambda pair: pair[0])]
-    
-    sorted_schedules[len(sorted_schedules)-1].paintSchedule() 
+
     
     sorted_schedules.reverse()
-    return sorted_schedules
+    return sorted_schedules[0]
 
 
-
-scheds = getSchedules()
-sorted  = sortSchedules(scheds)
-sorted[0].paintSchedule()
+sortSchedules(getSchedules()).paintSchedule()
+#scheds = getSchedules()
+#if len(scheds) > 0:
+#    sorted  = sortSchedules(scheds)
+#    sorted[0].paintSchedule()
