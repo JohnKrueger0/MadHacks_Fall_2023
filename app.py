@@ -2,6 +2,9 @@ import io
 import json
 import os
 from flask import Flask, render_template, request
+from io import BytesIO
+from PIL import Image
+import base64
 
 app = Flask(__name__)
 
@@ -16,7 +19,19 @@ def home():
 
 @app.route('/index.html')
 def index():
-    return render_template('index.html')
+    # Create a sample image with PIL (you may already have an image)
+    # Replace this with your image creation logic
+    width, height = 300, 200
+    img = Image.new('RGB', (width, height), color='red')
+
+    # Convert the PIL image to a base64 encoded string
+    buffered = BytesIO()
+    img.save(buffered, format="JPEG")
+    img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+    img_data = "data:image/jpeg;base64," + img_str
+
+    return render_template('index.html', img_data=img_data)
 
 
 

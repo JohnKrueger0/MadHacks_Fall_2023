@@ -141,7 +141,7 @@ class Schedule:
                 draw.rounded_rectangle(((left, v_start + (s - minTimes) * v_inc / 100), (right, v_start + (e - minTimes) * v_inc / 100)), fill=col, radius=10)
                 draw.text((left+5, v_start + (s - minTimes) * v_inc / 100 + 5),text=course_title + ' | ' + self.nums[day][sess] ,anchor='lt', color=(255, 255, 255), font=font3)
 
-        img.show()
+        return img
 
 
     def toStandardTime(self, milTime):
