@@ -6,29 +6,24 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-common = {
-    'first_name': 'Arjun',
-    'last_name': 'Santhanakrishnan',
-    'alias': 'ArjSan1'
-}
 
 
 @app.route('/')
 def index():
-    return render_template('index.html', common=common)
+    return render_template('index.html')
+
 
 
 @app.route('/impact')
 def impact():
-    
-    return render_template('imapct.html', common=common)
+    return render_template('impact.html')
 
 
 
 
 @app.route('/aboutus')
-def projects():
-    return render_template('aboutus.html', common=common)
+def aboutus():
+    return render_template('aboutus.html')
 
 
 
