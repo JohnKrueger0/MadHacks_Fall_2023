@@ -1,11 +1,20 @@
 import io
 import json
 import os
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from io import BytesIO
 from PIL import Image
 import base64
 import superScheduleGenerator as gen
+
+width, height = 300, 200
+img = Image.new('RGB', (width, height), color='red')
+
+buffered = BytesIO()
+img.save(buffered, format="JPEG")
+img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+img_data = "data:image/jpeg;base64," + img_str
 
 app = Flask(__name__)
 
@@ -20,15 +29,6 @@ def home():
 
 @app.route('/index.html')
 def index():
-    img = gen.sortSchedules(gen.getSchedules()).paintSchedule()
-
-    # Convert the PIL image to a base64 encoded string
-    buffered = BytesIO()
-    img.save(buffered, format="JPEG")
-    img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
-
-    img_data = "data:image/jpeg;base64," + img_str
-
     return render_template('index.html', img_data=img_data)
 
 
@@ -45,7 +45,37 @@ def aboutus():
     return render_template('aboutus.html')
 
 
+@app.route('/submit', methods=['POST'])
+def submit():
+    data = request.json['values']  # Retrieve the values sent from the frontend
+    # Now 'data' contains the 12 values you submitted
 
+    # Do whatever processing you need with this data
+    print(data)  # Just an example; you might do something more meaningful
+
+    img = gen.sortSchedules(gen.getSchedules()).paintSchedule()
+
+    # Convert the PIL image to a base64 encoded string
+    buffered = BytesIO()
+    img.save(buffered, format="JPEG")
+    img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+    img_data = "data:image/jpeg;base64," + img_str
+    
+    #return 'PEEEEEEENIS'#render_template('index.html', img_data=img)
+    #
+    # return render_template('index.html', img_data=img_data)
+    return jsonify({"img_data": img_data})
+
+    #return 'Data received on the backend!'  # Sending a response back to the frontend
+
+@app.route('/check_image', methods=['GET'])
+def check_image():
+    # Perform any checks here and return the current image URL
+    # Replace this with your logic to determine the image URL
+    #image_url = "https://via.placeholder.com/150"  # Placeholder URL for the generated image
+
+    return jsonify({"img_data": img_data})
 
 # def order_projects_by_weight(projects):
 #     try:

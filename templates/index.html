@@ -25,6 +25,19 @@
   <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
 
   <linkhref='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+
+  <style>
+      .grid-container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 5px;
+      }
+      .grid-item {
+          border: 1px solid #000;
+          padding: 5px;
+      }
+  </style>
+
   </head>
 
 
@@ -182,31 +195,83 @@
   <!-- Generating a 3x4 grid with JavaScript -->
 </div>
 
+<h1>Enter Data</h1>
+<div class="grid-container" id="gridContainer"></div>
+<button id="submitBtn">Submit</button>
+
 <script>
-  // JavaScript to dynamically generate the grid
-  document.addEventListener('DOMContentLoaded', function () {
-      const gridContainer = document.querySelector('.grid-container');
+    const gridContainer = document.getElementById('gridContainer');
+    const submitBtn = document.getElementById('submitBtn');
 
-      // Define the grid dimensions
-      const rows = 3;
-      const columns = 4;
+    // Generate the 3x4 grid
+    const rows = 3; // Define the number of rows
+    const columns = 4; // Define the number of columns
 
-      // Generate the grid
-      for (let i = 0; i < rows; i++) {
-          for (let j = 0; j < columns; j++) {
-              const gridItem = document.createElement('div');
-              gridItem.classList.add('grid-item');
+    for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < columns; j++) {
+                const gridItem = document.createElement('div');
+                gridItem.classList.add('grid-item');
 
-              const input = document.createElement('input');
-              input.setAttribute('type', 'text');
-              input.setAttribute('placeholder', `Class ${i + 1}`);
+                const input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('placeholder', `Class ${j * rows + i + 1}`);
 
-              gridItem.appendChild(input);
-              gridContainer.appendChild(gridItem);
-          }
-      }
-  });
-</script>
+                gridItem.appendChild(input);
+                gridContainer.appendChild(gridItem);
+            }
+        }
+
+    // Function to send data to the backend
+    submitBtn.addEventListener('click', () => {
+        const inputs = document.querySelectorAll('.grid-item input');
+        const data = Array.from(inputs).map(input => input.value);
+
+        fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ values: data })
+        })
+        .then(response => {
+            // Handle the response if needed
+            console.log('Data sent to the backend!');
+        })
+        .catch(error => {
+            // Handle any error during the fetch
+            console.error('Error:', error);
+        });
+        window.location.reload();
+    });
+    // Reload the current page
+    
+    // Function to update the image
+  function updateImage() {
+      fetch('/check_image', { method: 'GET' })
+          .then(response => response.json())
+          .then(data => {
+              const imageURL = data.image_url;
+              console.log('Image URL:', imageURL);
+
+              const imageContainer = document.getElementById('imageContainer');
+              imageContainer.innerHTML = ''; // Clear the container
+
+              const img = document.createElement('img');
+              img.src = imageURL;
+              img.alt = "Generated Image";
+              imageContainer.appendChild(img);
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+  }
+
+  // Call the function initially and set an interval to check for updates
+  updateImage();
+  setInterval(updateImage, 5000); // Check every 5 seconds (adjust timing as needed)
+
+
+  </script>
 
 
   <br>
