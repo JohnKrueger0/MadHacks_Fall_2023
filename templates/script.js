@@ -1,4 +1,4 @@
-var button = document.getElementById("classButton");
+var button = document.getElementById("classButtonContainer");
 
 button.addEventListener("click", sendData);
 
