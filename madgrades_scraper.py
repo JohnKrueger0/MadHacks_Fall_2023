@@ -22,10 +22,14 @@ client = MongoClient('mongodb+srv://asanthanakri:dumbass@cluster0.9esju.mongodb.
 driver = webdriver.Chrome()  # You'll need the appropriate WebDriver for your browser
 driver.get('https://madgrades.com/search')  # Replace this with the URL you want to scrape
 driver.fullscreen_window()
-
+#dummy_names = ['COMP SCI 320', 'MATH 340' , 'ART HIST 102']
 db = client['myDatabase']
 collection = db['CourseInfo']
+
+new_db = client['NewDatabase']
+new_collection = new_db['NewCollection']
 for document in collection.find({}, {"Class Title": 1, "_id": 0}):
+#for class_title in dummy_names:
     class_title = document.get("Class Title")
     if class_title in course_dick:
         continue
@@ -59,13 +63,23 @@ for document in collection.find({}, {"Class Title": 1, "_id": 0}):
         gpa = match.group(1) if match else None
         print(gpa)
         
-        if gpa = None:
-            course_dick.update({str(class_title): '0'})
- 
-        course_dick.update({str(class_title): str(gpa)})
+        if gpa is None:
+            gpa = '0'
         
+        # Update the database
+        # collection.update_one(
+        #     {"Class Title": class_title}, 
+        #     {"$set": {"GPA": gpa}}, 
+        #     upsert=True
+        # )
+        course_dick.update({str(class_title): str(gpa)})
 
 
+        new_collection.insert_one({"Class Title": class_title, "GPA": gpa})
+        
+#list_of_dicts = [{"Class Title": class_title, "GPA": gpa} for class_title, gpa in course_dick.items()]
+
+#mangoSave(list_of_dicts)
 driver.close()
 
 
