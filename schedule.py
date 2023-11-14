@@ -180,7 +180,7 @@ class Schedule:
                 cntGpa += 1
         avgGpa = cumGpa / cntGpa
         normGpa = (avgGpa - 2) / 2
-        normMorning = self.getTimeConc(730)
+        normMorning = self.getTimeConc(700)
         normEvening = self.getTimeConc(1700)
 
         return normGpa * wGpa + normMorning * wMorning + normEvening * wEvening
